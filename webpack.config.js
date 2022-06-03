@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
     //The entry point is the root of the bundle and the beginning of the dependency graph
@@ -14,6 +15,10 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
+        new BundleAnalyzerPlugin({
+            //Generates report.html in the dist folder (can set value to "disable" also)
+            analyzerMode: "static",
+        })
     ],
     //mode default is "production"
     mode: "development"
